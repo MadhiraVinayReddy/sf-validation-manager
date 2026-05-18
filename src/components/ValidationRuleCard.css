@@ -1,0 +1,243 @@
+.rule-card {
+  background: white;
+  border-radius: 12px;
+  border: 1.5px solid var(--sf-gray-3);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  transition: all 0.2s;
+  animation: cardIn 0.3s ease both;
+  position: relative;
+  overflow: hidden;
+}
+
+@keyframes cardIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.rule-card::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  border-radius: 12px 0 0 12px;
+  background: var(--sf-gray-3);
+  transition: background 0.2s;
+}
+
+.rule-card.active::before { background: var(--sf-green); }
+.rule-card.inactive::before { background: var(--sf-gray-4); }
+.rule-card.pending { border-color: rgba(1,118,211,0.3); box-shadow: 0 0 0 3px rgba(1,118,211,0.06); }
+.rule-card.pending::before { background: var(--sf-mid-blue); }
+
+.rule-card:hover {
+  border-color: var(--sf-gray-4);
+  box-shadow: var(--shadow-sm);
+  transform: translateY(-1px);
+}
+
+/* ─── Header ──────────────────────────────────────────── */
+.rule-card-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.rule-title-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex: 1;
+  min-width: 0;
+}
+
+.rule-index {
+  font-size: 11px;
+  font-family: var(--mono);
+  font-weight: 600;
+  color: var(--sf-gray-4);
+  flex-shrink: 0;
+}
+
+.rule-name {
+  font-size: 14.5px;
+  font-weight: 700;
+  color: var(--sf-dark-blue);
+  letter-spacing: -0.3px;
+  line-height: 1.3;
+  word-break: break-word;
+}
+
+.rule-status-badge {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-shrink: 0;
+}
+
+.pending-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--sf-mid-blue);
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(0.85); }
+}
+
+.status-badge {
+  padding: 3px 9px;
+  border-radius: 20px;
+  font-size: 11.5px;
+  font-weight: 600;
+  letter-spacing: 0.2px;
+}
+
+.status-badge.active {
+  background: var(--sf-green-bg);
+  color: var(--sf-green);
+}
+
+.status-badge.inactive {
+  background: var(--sf-gray-2);
+  color: var(--sf-gray-5);
+}
+
+/* ─── Description ─────────────────────────────────────── */
+.rule-description {
+  font-size: 13px;
+  color: var(--sf-gray-5);
+  line-height: 1.55;
+  padding: 10px 12px;
+  background: var(--sf-gray-1);
+  border-radius: 6px;
+  border-left: 3px solid var(--sf-gray-3);
+}
+
+/* ─── Meta ────────────────────────────────────────────── */
+.rule-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.rule-meta-item {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.meta-label {
+  font-size: 10.5px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  color: var(--sf-gray-4);
+}
+
+.meta-value {
+  font-size: 12.5px;
+  color: var(--sf-gray-6);
+  line-height: 1.4;
+  word-break: break-word;
+}
+
+.meta-value.mono {
+  font-family: var(--mono);
+  font-size: 11.5px;
+}
+
+.meta-value.error-msg {
+  color: var(--sf-red);
+  font-size: 12.5px;
+}
+
+.meta-value.id-val {
+  color: var(--sf-gray-4);
+  font-size: 10.5px;
+}
+
+/* ─── Footer ──────────────────────────────────────────── */
+.rule-card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 10px;
+  border-top: 1px solid var(--sf-gray-2);
+  gap: 10px;
+}
+
+/* ─── Toggle Switch ───────────────────────────────────── */
+.toggle-switch {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.toggle-switch input {
+  display: none;
+}
+
+.toggle-track {
+  width: 40px;
+  height: 22px;
+  background: var(--sf-gray-3);
+  border-radius: 11px;
+  position: relative;
+  transition: background 0.2s;
+  flex-shrink: 0;
+}
+
+.toggle-switch input:checked + .toggle-track {
+  background: var(--sf-green);
+}
+
+.toggle-thumb {
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 16px;
+  height: 16px;
+  background: white;
+  border-radius: 50%;
+  transition: transform 0.2s;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+}
+
+.toggle-switch input:checked + .toggle-track .toggle-thumb {
+  transform: translateX(18px);
+}
+
+.toggle-label {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--sf-gray-5);
+}
+
+.toggle-switch input:checked ~ .toggle-label {
+  color: var(--sf-green);
+}
+
+/* ─── Pending Badge ───────────────────────────────────── */
+.pending-badge {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--sf-mid-blue);
+  font-family: var(--mono);
+  background: rgba(1,118,211,0.08);
+  padding: 4px 8px;
+  border-radius: 6px;
+}

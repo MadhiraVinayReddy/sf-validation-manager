@@ -1,0 +1,215 @@
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(3, 45, 96, 0.55);
+  backdrop-filter: blur(4px);
+  z-index: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  animation: overlayIn 0.2s ease;
+}
+
+@keyframes overlayIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.modal-box {
+  background: white;
+  border-radius: 16px;
+  width: 100%;
+  max-width: 480px;
+  box-shadow: 0 32px 64px rgba(0,0,0,0.25);
+  animation: modalIn 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+  overflow: hidden;
+}
+
+@keyframes modalIn {
+  from { opacity: 0; transform: scale(0.92) translateY(10px); }
+  to { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+.modal-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 24px 24px 20px;
+  border-bottom: 1px solid var(--sf-gray-2);
+}
+
+.modal-icon {
+  width: 44px;
+  height: 44px;
+  background: var(--sf-light-blue);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--sf-mid-blue);
+  flex-shrink: 0;
+}
+
+.modal-header h2 {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--sf-dark-blue);
+  margin-bottom: 3px;
+}
+
+.modal-header p {
+  font-size: 13px;
+  color: var(--sf-gray-5);
+}
+
+.modal-close {
+  margin-left: auto;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--sf-gray-4);
+  padding: 4px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.15s;
+  flex-shrink: 0;
+}
+
+.modal-close:hover {
+  background: var(--sf-gray-2);
+  color: var(--sf-gray-7);
+}
+
+.modal-body {
+  padding: 20px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.change-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.change-group-label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11.5px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 4px;
+}
+
+.change-group.activating .change-group-label { color: var(--sf-green); }
+.change-group.deactivating .change-group-label { color: var(--sf-gray-5); }
+
+.change-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  border-radius: 8px;
+  font-size: 13px;
+}
+
+.change-item.activating { background: var(--sf-green-bg); }
+.change-item.deactivating { background: var(--sf-gray-2); }
+
+.change-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.change-dot.green { background: var(--sf-green); }
+.change-dot.gray { background: var(--sf-gray-4); }
+
+.change-name {
+  flex: 1;
+  font-weight: 600;
+  color: var(--sf-gray-7);
+  word-break: break-word;
+}
+
+.change-arrow {
+  font-size: 12px;
+  font-family: var(--mono);
+  color: var(--sf-gray-5);
+  flex-shrink: 0;
+}
+
+.modal-warning {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  padding: 12px 14px;
+  background: #FFF8E6;
+  border: 1px solid rgba(255,130,0,0.2);
+  border-radius: 8px;
+  color: #7A4800;
+  font-size: 12.5px;
+  line-height: 1.5;
+}
+
+.modal-warning svg {
+  flex-shrink: 0;
+  margin-top: 1px;
+  color: var(--sf-orange);
+}
+
+.modal-footer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 10px;
+  padding: 16px 24px;
+  background: var(--sf-gray-1);
+  border-top: 1px solid var(--sf-gray-2);
+}
+
+.btn-modal-cancel {
+  padding: 9px 18px;
+  border-radius: 8px;
+  border: 1px solid var(--sf-gray-3);
+  background: white;
+  font-family: var(--font);
+  font-size: 13.5px;
+  font-weight: 600;
+  color: var(--sf-gray-6);
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.btn-modal-cancel:hover {
+  background: var(--sf-gray-2);
+}
+
+.btn-modal-confirm {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 9px 20px;
+  border-radius: 8px;
+  border: none;
+  background: linear-gradient(135deg, var(--sf-dark-blue), var(--sf-mid-blue));
+  color: white;
+  font-family: var(--font);
+  font-size: 13.5px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s;
+  box-shadow: 0 2px 8px rgba(1,118,211,0.25);
+}
+
+.btn-modal-confirm:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(1,118,211,0.3);
+}
